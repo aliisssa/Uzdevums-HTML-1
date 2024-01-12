@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Form</title>
+    <script>
+        function saveData() {
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var complaint = document.getElementById('complaint').value;
+            
+            var data = "Name: " + name + "\nAge: " + age + "\nGender: " + gender + "\nComplaint: " + complaint;
+            
+            var a = document.createElement('a');
+            var file = new Blob([data], {type: 'text/plain'});
+            a.href = URL.createObjectURL(file);
+            a.download = 'patient_data.txt';
+            a.click();
+        }
+    </script>
+</head>
+<body>
+    <h2>Patient Form</h2>
+    <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age"><br>
+        
+        <label for="gender">Gender:</label><br>
+        <input type="text" id="gender" name="gender"><br>
+        
+        <label for="complaint">Complaint:</label><br>
+        <textarea id="complaint" name="complaint"></textarea><br>
+        
+        <button type="button" onclick="saveData()">Save</button>
+    </form>
+</body>
+</html>
